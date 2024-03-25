@@ -3,7 +3,7 @@
       <div class="container mx-auto">
         <div class="flex justify-between text-xs font-normal text-grey">
           <a target="_blank" href="#" class="flex items-center gap-2 icon-hover">
-            <img src="@/assets/img/icon/location.svg"/>
+            <img src="@/assets/img/icon/Location.svg"/>
             <span class="">Город: <span class="underline text-bold-grey">Ташкент</span></span>
           </a>
 
@@ -63,6 +63,8 @@ export default {
   padding: 0;
   background: inherit;
 }
+
+
 
 </style>
 

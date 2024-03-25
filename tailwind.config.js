@@ -20,6 +20,10 @@ module.exports = {
         "bor-grey": " rgb(242, 242, 250)",
         "btn-grey": " rgb(248, 248, 248)",
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        firs: ["Firs", "sans-serif"],
+      },
     },
   },
   plugins: [],

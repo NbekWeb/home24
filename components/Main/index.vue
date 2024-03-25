@@ -1,8 +1,8 @@
 <template>
   <div>
     <Slide />
-    <CategoryCards />
-    <Populars/>
+    <CategoryCards class="font-firs" />
+    <Populars class="font-firs"/>
   </div>
 </template>
 <script>
