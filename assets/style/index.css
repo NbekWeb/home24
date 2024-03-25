@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.icon-hover:hover {
+  cursor: pointer;
+}
+.icon-hover:hover img {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+    brightness(104%) contrast(97%) !important;
+  transition: 0.3s ease;
+}
+
+.icon-hover:hover span {
+  color: rgb(255, 100, 24);
+}
+.icon-hover:hover p {
+  color: #fff;
+}
+
+.order-icons:hover {
+  color: rgb(255, 100, 24);
+}
+
+.order-icons:hover div {
+  background-color: rgb(255, 100, 24);
+  transition: .3s ease;
+}
+.order-icons img {
+  filter: invert(0%) brightness(0%);
+}
+
+.order-icons:hover img {
+  filter: invert(100%) brightness(1000%) !important;
+  transition: .3s ease;
+}
+.order-icons:hover span {
+    color: rgb(255, 100, 24);
+    transition: .3s ease;
+  }
+
+@import "./tailwind.css";
