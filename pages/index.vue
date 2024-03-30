@@ -1,7 +1,7 @@
 <template>
-  <!-- <MainContact/> -->
-  <!-- <MainNavbar/> -->
-  <Main />
+  <div>
+    <Main />
+  </div>
 </template>
 
 <script>
