@@ -1,18 +1,13 @@
-
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 export default ({ $axios, redirect, error }, inject) => {
   const axiosInstance = $axios.create({
-    baseURL: "http://185.211.170.253:8008/api/wms/v1",
+    baseURL: "https://e-shop.ndc.uz/api",
   });
-  // axiosInstance.setHeader("Content-Type", "application/json");
 
   axiosInstance.onRequest((config) => {
-    // console.log('saAS');
-    // console.log('$cookies.get("token")', Cookies.get('token'));
-    const token = Cookies.get('token');
+    const token = Cookies.get("token");
     if (token) {
-      // console.log('dada',token)
       config.headers.common["Authorization"] = `Bearer ${token}`;
     }
     return config;

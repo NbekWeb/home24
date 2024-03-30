@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center w-full h-32 bg-white">
     <div class="container items-center mx-auto">
-      <div class="flex items-center justify-between text-xs head">
+      <div class="flex items-center justify-between leading-6 text-x head">
         <nuxt-link to="/"
           ><img src="@/assets/img/logo.png" class="h-11"
         /></nuxt-link>
@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-      <div class="relative flex justify-between w-full pt-7">
+      <div class="relative flex justify-between w-full leading-6 text-x pt-7">
         <nuxt-link
           v-for="link in links"
           :key="link.id"

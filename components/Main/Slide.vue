@@ -1,10 +1,15 @@
 <template>
   <div class="slide bg-back-grey">
-    <div class="container flex justify-between h-full py-10 mx-auto text-black">
-      <div class="slider border">
-        <img src="@/assets/img/head.png" alt="" srcset="" class="heada">
+    <div class="container flex gap-x-7 h-[528px] py-10 mx-auto text-black">
+      <div class="slider bg-inherit">
+        <img
+          src="@/assets/img/head.png"
+          alt=""
+          srcset=""
+          class="heada bg-inherit"
+        />
       </div>
-      <div class="w-[390px] h-[420px]  bg-white rounded-3xl px-8 py-7">
+      <div class="w-[390px] h-[432px] bg-white rounded-3xl px-8 py-7">
         <div class="flex justify-between w-full">
           <h2 class="text-2xl uppercase">товар дня</h2>
           <div
@@ -14,8 +19,8 @@
           </div>
         </div>
         <div class="flex justify-between py-8">
-          <div class="swaper  widt-calc h-[100px]">
-            <img src="@/assets/img/kreslo.png" alt="" srcset="">
+          <div class="swaper widt-calc h-[100px]">
+            <img src="@/assets/img/kreslo.png" alt="" srcset="" />
           </div>
           <div class="h-[200px] widt-calc">
             <div
@@ -34,9 +39,9 @@
               <img src="@/assets/img/icon/Star.svg" />
               <span>Нет отзывов</span>
             </div>
-            <p class="mt-3 text-xl">Realme Pad Mini 32GB + 3GB LTE (синий)</p>
+            <p class="mt-3 text-[14px]">Realme Pad Mini 32GB + 3GB LTE (синий)</p>
             <div
-              class="flex cursor-pointer items-center justify-center w-full gap-2 mt-6 rounded h-9 bg-bold-orenge hover:bg-orenge"
+              class="flex items-center justify-center w-full gap-2 mt-6 rounded cursor-pointer h-9 bg-bold-orenge hover:bg-orenge"
             >
               <img
                 src="@/assets/img/icon/bag.svg"
@@ -55,9 +60,6 @@
 export default {};
 </script>
 <style>
-/* .slide {
-  height: calc(100vh - 10.5rem);
-} */
 .trapazoid {
   clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0 100%);
   background: linear-gradient(
@@ -71,8 +73,8 @@ export default {};
   width: calc(50% - 10px);
 }
 
-.heada{
-  height: 420px;
+.heada {
+  height: 432px;
   width: auto;
 }
 </style>

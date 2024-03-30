@@ -24,6 +24,12 @@ module.exports = {
         inter: ["Inter", "sans-serif"],
         firs: ["Firs", "sans-serif"],
       },
+      fontSize:{
+        'min':'13px',
+        's':'14px',
+        'xs':'16px',
+        'x':'18px'
+      }
     },
   },
   plugins: [],

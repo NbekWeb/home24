@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-10 bg-back-grey ">
       <div class="container mx-auto">
-        <div class="flex justify-between text-xs font-normal text-grey">
+        <div class="flex justify-between font-normal leading-5 text-s text-grey">
           <a target="_blank" href="#" class="flex items-center gap-2 icon-hover">
             <img src="@/assets/img/icon/Location.svg"/>
             <span class="">Город: <span class="underline text-bold-grey">Ташкент</span></span>

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full pt-20 text-xs font-normal text-grey">
     <div class="container mx-auto">
-      <div class="flex flex-wrap justify-between w-full border border-b">
+      <div class="flex flex-wrap justify-between w-full">
         <div class="flex flex-col gap-y-4">
           <h3 class="mb-4 text-xl font-medium text-bold-grey">Информация</h3>
           <nuxt-link to="/">О компании</nuxt-link>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="flex flex-col gap-y-4">
-          <h3 class="mb-4 text-xl font-medium text-bold-grey">
+          <h3 class="mb-4 text-xl font-medium text-bold-grey ">
             Поддержка и сервис
           </h3>
           <nuxt-link to="/">Вопросы и ответы </nuxt-link>

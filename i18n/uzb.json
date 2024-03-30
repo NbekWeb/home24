@@ -1,6 +1,7 @@
 {
   "catalog": "Katalog",
   "comparison": "Taqqoslash",
+  "comparisonList": "Taqqoslash ro'yxati",
   "favorites": "Sevimlilar",
   "cart": "Savatcha",
   "login": "Kirish",
@@ -8,5 +9,8 @@
   "enterPhone": "Nomer kiriting",
   "enterPhoneNum": "Iltimos, telefon raqamini kiriting!",
   "rulePhone": "Telefon raqami 9 ta raqamdan iborat bo'lishi kerak",
-  "phone": "Telefon raqami"
+  "phone": "Telefon raqami",
+  "items": "Tovarlar ",
+  "home":" Bosh menyu"
+
 }
