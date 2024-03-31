@@ -1,15 +1,21 @@
 <template>
   <div class="slide bg-back-grey">
-    <div class="container flex gap-x-7 h-[528px] py-10 mx-auto text-black">
-      <div class="slider bg-inherit">
-        <img
-          src="@/assets/img/head.png"
-          alt=""
-          srcset=""
-          class="heada bg-inherit"
-        />
+    <div class="container flex gap-x-7 h-[528px] py-10 mx-auto text-black ">
+      <div class="relative overflow-x-hidden slider ">
+        <div class="swiper-container heroSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="item of 5" :key="item">
+              <img
+                src="@/assets/img/head.png"
+                alt=""
+                class="heada bg-inherit"
+              />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
-      <div class="w-[390px] h-[432px] bg-white rounded-3xl px-8 py-7">
+      <!-- <div class="w-[390px] h-[432px] bg-white rounded-3xl px-8 py-7">
         <div class="flex justify-between w-full">
           <h2 class="text-2xl uppercase">товар дня</h2>
           <div
@@ -39,7 +45,9 @@
               <img src="@/assets/img/icon/Star.svg" />
               <span>Нет отзывов</span>
             </div>
-            <p class="mt-3 text-[14px]">Realme Pad Mini 32GB + 3GB LTE (синий)</p>
+            <p class="mt-3 text-[14px]">
+              Realme Pad Mini 32GB + 3GB LTE (синий)
+            </p>
             <div
               class="flex items-center justify-center w-full gap-2 mt-6 rounded cursor-pointer h-9 bg-bold-orenge hover:bg-orenge"
             >
@@ -52,12 +60,30 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 <script>
-export default {};
+import Swiper, { Pagination, Autoplay } from "swiper";
+import "swiper/swiper-bundle.css";
+
+export default {
+  mounted() {
+    Swiper.use([Pagination, Autoplay]);
+    this.swiper = new Swiper(".heroSwiper", {
+      slidesPerView: 1,
+      autoplay: {
+        delay: 3000,
+      },
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  },
+};
 </script>
 <style>
 .trapazoid {

@@ -14,7 +14,7 @@
     "core-js": "^3.25.3",
     "element-ui": "^2.15.10",
     "nuxt": "^2.15.8",
-    "swiper": "^11.0.7",
+    "swiper": "^6.8.4",
     "v-mask": "^2.3.0",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
