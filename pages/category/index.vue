@@ -1,5 +1,6 @@
 <template>
-  <div class="container pt-8 mx-auto text-bold-grey">
+  <div class="container flex pt-8 mx-auto">
+    <div class="w-64 overflow-y-auto border text-bold-grey">
     <div class="pb-10">
       <p>Категории</p>
     </div>
@@ -39,6 +40,28 @@
         </el-checkbox-group>
       </div>
     </div>
+    <div class="flex-col pt-10">
+      <p class="pb-4 text-xl font-semibold">Обслуживаемая площадь</p>
+      <div class="flex flex-col text-xs font-normal gap-y-2">
+        <el-checkbox-group v-model="checkPlace" class="flex flex-col gap-y-2">
+          <el-checkbox label="Ддо 25 м2"></el-checkbox>
+          <el-checkbox label="от 25 м2"></el-checkbox>
+        </el-checkbox-group>
+      </div>
+    </div>
+    <div class="flex-col pt-10">
+      <p class="pb-4 text-xl font-semibold">Обслуживаемая площадь</p>
+      <div class="flex flex-col text-xs font-normal gap-y-2">
+        <el-checkbox-group v-model="checkPlace" class="flex flex-col gap-y-2">
+          <el-checkbox label="Ддо 25 м2"></el-checkbox>
+          <el-checkbox label="от 25 м2"></el-checkbox>
+        </el-checkbox-group>
+      </div>
+    </div>
+  </div>
+ <div class="overflow-y-auto">
+  <nuxt-child />
+ </div>
   </div>
 </template>
 <script>
@@ -50,6 +73,7 @@ export default {
       checkPlace: [],
     };
   },
+ 
 };
 </script>
 <style>

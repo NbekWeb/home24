@@ -75,7 +75,6 @@ export default {
       if (category?.children.length != 0) {
         this.title = category?.name;
         this.categoryChildren = category?.children;
-        console.log(category);
       }
     },
   },

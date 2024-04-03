@@ -8,4 +8,7 @@ export default {
   async getCategories() {
     return await $nuxt.$axiosInstance.get("/categories");
   },
+  async getProducts(category){
+    return await $nuxt.$axiosInstance.get(`/products?category=${category}`);
+  }
 };
