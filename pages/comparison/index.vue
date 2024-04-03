@@ -11,9 +11,9 @@
         <p>{{ $t("items") }}:0</p>
       </div>
       sasas
-     <div>
-      {{ data }}
-     </div>
+      <div v-for="banner of banners" :key="banner?.id">
+        {{ banner["lg_img"] }}
+      </div>
       <CardEmpty
         img="empty-comparison"
         title="Сравнивать пока нечего"
@@ -24,20 +24,21 @@
   </div>
 </template>
 <script>
+import porductsApi from "@/api/productsApi.js";
 export default {
   data() {
     return {
-      data: [],
+      banners: [],
     };
   },
   mounted() {
-    this.getBanner(); // Call getBanner method when the component is mounted
+    this.__GET_BANNERS();
   },
   methods: {
-    async getBanner() {
+    async __GET_BANNERS() {
       try {
-        const banner = await $nuxt.$axiosInstance.get("/banners");
-        this.data = banner.data.banners.data;
+        const dataBanners = await porductsApi.getBanners();
+        this.banners = dataBanners?.data?.banners?.data;
       } catch (e) {
         console.error("Error fetching banners:", e);
       }

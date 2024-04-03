@@ -37,7 +37,7 @@
 <script>
 export default {};
 </script>
-<style>
+<style >
 .popular__img {
   border: 1px solid rgb(243, 243, 250);
 }
