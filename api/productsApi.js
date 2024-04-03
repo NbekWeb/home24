@@ -10,5 +10,11 @@ export default {
   },
   async getProducts(category){
     return await $nuxt.$axiosInstance.get(`/products?category=${category}`);
-  }
+  },
+  async getSearch(search){
+    return await $nuxt.$axiosInstance.get(`/search?search=${search}`);
+  },
+  async getBrands(search){
+    return await $nuxt.$axiosInstance.get('/brands')
+  },
 };

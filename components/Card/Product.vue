@@ -1,15 +1,15 @@
 <template>
-  <div class="flex flex-col w-64 h-full gap-y-2 gap-x-6">
+  <div class="flex flex-col w-64 h-full gap-y-2 gap-x-6 product rounded-2xl">
     <img
-      :src="product?.products?.[0]?.images?.[0]?.md_img"
-      :alt="product?.name"
-      class="h-[336px] border border-bor-grey rounded-2xl w-full object-contain"
+      :src="img"
+      :alt="name"
+      class="h-[336px] border border-bor-grey rounded-2xl w-full object-contain product__img"
     />
-
-    <div class="px-4 py-3 bg-red-300">
-      <div class="flex justify-between w-full ">
+    <!-- product?.images?.[0]?.md_img -->
+    <div class="px-4 py-3 bg-btn-grey rounded-2xl product__text">
+      <div class="flex justify-between w-full items-center mb-2">
         <div class="">
-          <p>{{ product?.products?.[0]?.real_price }}</p>
+          <p>{{ price }}</p>
           <!-- <p>6 187 000 сум</p> -->
         </div>
         <div
@@ -18,16 +18,40 @@
           <img src="@/assets/img/icon/buy.svg" />
         </div>
       </div>
-      <div>{{ product?.stars || "0.0 Hali baho yo" }}</div>
-      <p>{{ product?.products?.[0]?.name }}</p>
+      <div class="flex gap-1">
+        <img src="@/assets/img/icon/stardegre.svg" alt="" srcset="" />
+        <span> {{ stars || "0.0 Hali baho yo" }}</span>
+      </div>
+      <p>{{ name }}</p>
     </div>
   </div>
 </template>
 <script>
 export default {
   props: {
-    product: {},
+    img: "",
+    stars: "",
+    price: "",
+    name: "",
   },
 };
 </script>
-<style></style>
+<style  scoped>
+.product:hover .product__img{
+  transform: scale(1.05);
+}
+.product:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.product:hover .product__img {
+  border-bottom: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.product:hover .product__text{
+  border-top: none;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+</style>

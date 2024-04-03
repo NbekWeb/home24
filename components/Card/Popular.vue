@@ -47,7 +47,7 @@ export default {};
 }
 
 .popular:hover .tran {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .popular:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,

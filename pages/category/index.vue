@@ -59,7 +59,7 @@
       </div>
     </div>
   </div>
- <div class="overflow-y-auto">
+ <div class="overflow-y-auto ml-12 w-full">
   <nuxt-child />
  </div>
   </div>
@@ -106,5 +106,8 @@ export default {
 }
 .el-checkbox__input.is-checked + .el-checkbox__label {
   color: rgb(255, 100, 24) !important;
+}
+.el-checkbox__inner{
+  z-index: 0;
 }
 </style>
