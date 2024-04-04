@@ -1,7 +1,7 @@
 <template>
   <div class="absolute top-0 z-20 w-full h-auto bg-white py-14">
     <div class="container flex w-full mx-auto">
-      <div class="flex pl-3">
+      <div class="flex pl-3 overflow-y-auto h-[600px]">
         <div
           class="flex flex-col gap-y-14 justify-start w-[250px] gap-6 border-r-[2px] border-bor-grey"
         >
@@ -12,14 +12,16 @@
             @mouseover="getCategoryChildren(category)"
           >
             <!-- <img src="@/assets/img/icon/Heart.svg" alt="Heart Icon" /> -->
-            <nuxt-link :to="'/category/' + `${category?.slug}`" class="hover:text-orenge">{{
-              category?.name
-            }}</nuxt-link>
+            <nuxt-link
+              :to="'/category/' + `${category?.slug}`"
+              class="hover:text-orenge"
+              >{{ category?.name }}</nuxt-link
+            >
           </div>
         </div>
       </div>
 
-      <div class="pl-6 ">
+      <div class="pl-6">
         <h2 class="text-3xl font-medium text-orenge">{{ title }}</h2>
 
         <div
@@ -32,7 +34,7 @@
           >
             <nuxt-link
               :to="'/category/' + `${childCategory?.slug}`"
-              class="pb-6 text-2xl font-medium text-bold-grey "
+              class="pb-6 text-2xl font-medium text-bold-grey"
             >
               {{ childCategory?.name }}
             </nuxt-link>
@@ -85,4 +87,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+::-webkit-scrollbar {
+  width: 0px;
+}
+</style>

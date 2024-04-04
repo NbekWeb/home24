@@ -5,20 +5,26 @@
         class="popular__img h-[336px] w-full relative rounded-t-2xl rounded-b-2xl"
       >
         <div class="flex justify-center w-full">
-          <img src="@/assets/img/kreslo.png" class="object-cover tran" />
+          <img :src="img" class="object-cover tran" />
         </div>
-        <div class="absolute bottom-3 left-3">
+        <div class="absolute text-white bottom-3 left-3">
           <img src="@/assets/img/aksi.png" class="h-full" />
+          <span class="absolute text-[10px] top-5 left-5">скидки</span>
+          <span class="absolute text-base top-8 left-5">
+            {{ skidki || 15 }} %</span
+          >
         </div>
       </div>
       <div class="px-4 py-3 mt-2 popular__title">
         <div class="flex justify-between">
           <div class="">
-            <p class="text-xl text-bold-grey">3 000 000 cum</p>
-            <p class="text-xs line-through light-grey">3 000 000 cum</p>
+            <p class="text-xl text-bold-grey">
+              {{ Math.floor(price * 0.7) }} cum
+            </p>
+            <p class="text-xs line-through light-grey">{{ price }} cum</p>
             <div class="flex gap-1">
               <img src="@/assets/img/icon/stardegre.svg" alt="star" />
-              <span>5.0</span>
+              <span>{{ starts }}</span>
             </div>
           </div>
           <div
@@ -28,16 +34,24 @@
           </div>
         </div>
         <p class="mt-2 text-xs font-medium text-bold-grey">
-          Руководительское кресло Metta Комплект 5.1 (Чёрный)
+          {{ name }}
         </p>
       </div>
     </nuxt-link>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    name: "",
+    price: "",
+    starts: "",
+    skidki: "",
+    img: "",
+  },
+};
 </script>
-<style >
+<style>
 .popular__img {
   border: 1px solid rgb(243, 243, 250);
 }

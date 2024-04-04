@@ -25,6 +25,7 @@ module.exports = {
         firs: ["Firs", "sans-serif"],
       },
       fontSize:{
+        
         'min':'13px',
         's':'14px',
         'xs':'16px',

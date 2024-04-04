@@ -1,10 +1,21 @@
 <template>
-  <div class="flex items-center justify-center rounded brend">
-    <img src="@/assets/img/icon/insta.svg" alt="" />
+  <div>
+    <nuxt-link
+      :to="'/search/'+ slug"
+      class="flex items-center justify-center border rounded brend"
+    >
+      <img :src="img" :alt="name" class="object-cover w-full h-full rounded" />
+    </nuxt-link>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    img: "",
+    name: "",
+    slug:""
+  },
+};
 </script>
 <style>
 .brend {
