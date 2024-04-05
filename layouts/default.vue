@@ -5,7 +5,7 @@
     <div>
       <nuxt />
       <div
-        class="w-full flex justify-center items-center absolute top-0 bg-black/80 h-screen overflow-hidden"
+        class="absolute top-0 z-30 flex items-center justify-center w-full h-screen overflow-hidden bg-black/80"
         v-show="getLog"
       >
         <CardLogin class="" />

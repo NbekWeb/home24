@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[590px] h-[460px] bg-white login">
+  <div class="w-[590px] h-[460px] bg-white login z-30">
     <div class="flex justify-between p-10 bg-back-grey">
       <p>{{ $t("login") }}</p>
       <img
@@ -41,6 +41,7 @@ export default {
       ruleForm: {
         number: "",
         password: "",
+        
       },
       rules: {
         number: [

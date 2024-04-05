@@ -36,14 +36,7 @@
   width: calc(100% - 414px);
 }
 
-/* .swiper-button-prev,
-.swiper-button-next {
-  position: absolute;
-  bottom: 0px !important;
-  z-index: 20;
-  width: 56px !important;
-  height: 56px !important;
-} */
+
 
 .swiper-button-prev {
   left: 10px;

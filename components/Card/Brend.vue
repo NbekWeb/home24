@@ -1,7 +1,7 @@
 <template>
   <div>
     <nuxt-link
-      :to="'/search/'+ slug"
+      :to="'/brand/'+ slug"
       class="flex items-center justify-center border rounded brend"
     >
       <img :src="img" :alt="name" class="object-cover w-full h-full rounded" />

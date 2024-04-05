@@ -5,7 +5,7 @@
       <img src="@/assets/img/icon/arrow-right.svg" alt="arrow" srcset="" />
       <nuxt-link to="/wishes">{{ $t("favorites") }}</nuxt-link>
     </div>
-    <div class="flex flex-wrap gap-x-6 gap-y-12" v-if="products.length > 0">
+    <div class="flex flex-wrap gap-x-6 gap-y-12" v-if="category.length > 0">
       <CardProduct
         :img="product?.products?.[0]?.images?.[0]?.md_img"
         :name="product?.products?.[0]?.name"
@@ -31,13 +31,17 @@ export default {
   data() {
     return {
       products: [],
+      category:[]
     };
   },
   methods: {
     async __GET_PRODUCTS() {
       try {
-        const data = await porductsApi.getProducts(this.$route.params.category);
+        const data = await porductsApi.getProducts('?category='+this.$route.params.category);
+        const dataCategory = await porductsApi.getCategory(this.$route.params.category);
         this.products = data?.data?.products?.data;
+        this.category = dataCategory?.data?.products?.data;
+        console.log(data)
       } catch (e) {
         console.log(e);
       }
