@@ -9,7 +9,7 @@
         <nuxt-child />
       </div>
       <div class="mt-10">
-        <p class="text-4xl">Другие блоги</p>
+        <p class="mb-6 text-4xl">Другие блоги</p>
         <div class="flex flex-wrap gap-6">
           <CardBlog
             v-for="blog of blogs"

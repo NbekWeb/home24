@@ -93,7 +93,7 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.15s ease-in;
+  transition: transnform 0.15s ease-in;
 }
 .el-radio__input.is-checked + .el-radio__label {
   color: rgb(255, 100, 24);

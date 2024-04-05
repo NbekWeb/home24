@@ -23,54 +23,58 @@
           :placeholder="$t('enterPhone')"
         ></el-input>
       </el-form-item>
-
-      <el-button
-        type="primary"
-        @click="submitForm('ruleForm')"
-        class="border"
-      >{{ $t("login") }}</el-button>
+      <el-form-item v-if="ruleForm.sendCode" :label="$t('smsCode')" prop="smsCode" class="mt-2 mb-2">
+        <el-input
+          v-model="ruleForm.smsCode"
+          class="border"
+          :placeholder="$t('enterSmsCode')"
+        ></el-input>
+      </el-form-item>
+      <el-button type="primary" @click="__SEND_SMS" class="border">
+        {{ $t("sendSms") }}
+      </el-button>
+      <el-button type="primary" @click="__REGISTER" class="border" v-if="sendCode">
+        {{ $t("register") }}
+      </el-button>
     </el-form>
   </div>
 </template>
 
 <script>
-
+import loginApi from "@/api/authApi.js";
 export default {
   data() {
     return {
       ruleForm: {
         number: "",
-        password: "",
-        
+        smsCode: "",
+        sendCode: false,
       },
       rules: {
-        number: [
-         
-          { validator: this.checkNumber, trigger: "blur" },
-        ],
-        password: [
+        number: [{ validator: this.checkNumber, trigger: "blur" }],
+        smsCode: [
           {
             required: true,
-            message: "",
+            message: this.$t("enterSmsCode"),
             trigger: "blur",
           },
-          { validator: this.checkPassword, trigger: "blur" },
         ],
       },
     };
   },
   methods: {
-    checkPassword(rule, value, callback) {
-      if (value === "") callback(new Error(this.$t("please_enter_password")));
-      else if (value.length < 8) {
-        callback(new Error(this.$t("rulePhone")));
-      } else {
-        callback();
-      }
+    async __SEND_SMS() {
+      await loginApi.postSendCode({ phone_number: this.ruleForm.number });
+      this.sendCode = true;
+    },
+    async __REGISTER() {
+      await loginApi.postRegister({
+        phone_number: this.ruleForm.number,
+        sms_code: this.ruleForm.smsCode,
+      });
     },
     checkNumber(rule, value, callback) {
-      if (value === "")
-        callback(new Error(this.$t("enterPhone")));
+      if (value === "") callback(new Error(this.$t("enterPhone")));
       else if (value.length < 9) {
         callback(new Error(this.$t("rulePhone")));
       } else {
@@ -80,6 +84,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          // Form is valid, you can perform further actions here
         } else {
           return false;
         }
