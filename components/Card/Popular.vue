@@ -1,6 +1,6 @@
 <template lang="">
   <div class="w-[252px] popular rounded-b-2xl">
-    <nuxt-link to="">
+    <nuxt-link :to="'products/'+slug">
       <div
         class="popular__img h-[336px] w-full relative rounded-t-2xl rounded-b-2xl"
       >
@@ -48,6 +48,7 @@ export default {
     starts: "",
     skidki: "",
     img: "",
+    slug:''
   },
 };
 </script>

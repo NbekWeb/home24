@@ -12,36 +12,49 @@
     <el-form
       :model="ruleForm"
       :rules="rules"
-      ref="ruleForm"
+      ref="ruleFormRef"
       class="p-10 font-mono text-xl demo-ruleForm placeholder-grey text-grey"
     >
-      <el-form-item :label="$t('phone')" prop="number" class="mb-6">
-        <el-input
-          v-model="ruleForm.number"
+      <div v-if="!ruleForm.sendCode">
+        <el-form-item :label="$t('phone')" prop="number" class="mb-6">
+          <el-input
+            v-model="ruleForm.number"
+            class="border"
+            v-mask="'998XXXXXXXXX'"
+            :placeholder="$t('enterPhone')"
+          ></el-input>
+        </el-form-item>
+        <el-button
+          type="primary"
+          @click="submitForm('ruleFormRef')"
           class="border"
-          v-mask="'+998(XX) XXX XX XX'"
-          :placeholder="$t('enterPhone')"
-        ></el-input>
-      </el-form-item>
-      <el-form-item v-if="ruleForm.sendCode" :label="$t('smsCode')" prop="smsCode" class="mt-2 mb-2">
-        <el-input
-          v-model="ruleForm.smsCode"
+        >
+          {{ $t("smsButton") }}
+        </el-button>
+      </div>
+      <div v-else>
+        <el-form-item :label="$t('phone')" prop="number" class="mb-6">
+          <el-input
+            v-model="ruleForm.smsCode"
+            class="border"
+            :placeholder="$t('smsCode')"
+          ></el-input>
+        </el-form-item>
+        <el-button
+          type="primary"
+          @click="submitForm2('ruleFormRef')"
           class="border"
-          :placeholder="$t('enterSmsCode')"
-        ></el-input>
-      </el-form-item>
-      <el-button type="primary" @click="__SEND_SMS" class="border">
-        {{ $t("sendSms") }}
-      </el-button>
-      <el-button type="primary" @click="__REGISTER" class="border" v-if="sendCode">
-        {{ $t("register") }}
-      </el-button>
+        >
+          {{ $t("codeButton") }}
+        </el-button>
+      </div>
     </el-form>
   </div>
 </template>
 
 <script>
 import loginApi from "@/api/authApi.js";
+
 export default {
   data() {
     return {
@@ -65,13 +78,7 @@ export default {
   methods: {
     async __SEND_SMS() {
       await loginApi.postSendCode({ phone_number: this.ruleForm.number });
-      this.sendCode = true;
-    },
-    async __REGISTER() {
-      await loginApi.postRegister({
-        phone_number: this.ruleForm.number,
-        sms_code: this.ruleForm.smsCode,
-      });
+      this.ruleForm.sendCode = true;
     },
     checkNumber(rule, value, callback) {
       if (value === "") callback(new Error(this.$t("enterPhone")));
@@ -81,10 +88,28 @@ export default {
         callback();
       }
     },
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+    async submitForm(formName) {
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          // Form is valid, you can perform further actions here
+          this.ruleForm.sendCode = true;
+          console.log(this.ruleForm.number);
+          await loginApi.postSendCode({
+            phone_number: this.ruleForm.number,
+          });
+        } else {
+          return false;
+        }
+      });
+    },
+    async submitForm2(formName) {
+      this.$refs[formName]?.validate(async (valid) => {
+        if (valid) {
+          const data = await loginApi.postRegister({
+            phone_number: this.ruleForm.number,
+            sms_code: this.ruleForm.smsCode,
+          });
+          localStorage.setItem("token", data?.data?.token);
+          this.$store.commit('toggleLog')
         } else {
           return false;
         }

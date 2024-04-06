@@ -9,6 +9,7 @@
           :name="product?.name"
           :price="product?.products?.[0]?.real_price"
           :img="product?.products?.[0]?.images?.[0]?.md_img"
+          :slug="product?.products?.[0]?.slug"
           :starts="product?.stars"
         />
       </div>

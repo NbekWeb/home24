@@ -1,7 +1,10 @@
 <template>
-  <div class="absolute top-0 z-20 w-full h-auto bg-white py-14">
+  <div
+    class="absolute top-0 z-20 w-full h-auto bg-white py-14"
+    v-show="categories.length > 0"
+  >
     <div class="container flex w-full mx-auto">
-      <div class="flex pl-3 overflow-y-auto h-auto">
+      <div class="flex h-auto pl-3 overflow-y-auto">
         <div
           class="flex flex-col gap-y-14 justify-start w-[250px] gap-6 border-r-[2px] border-bor-grey"
         >
@@ -14,6 +17,7 @@
             <!-- <img src="@/assets/img/icon/Heart.svg" alt="Heart Icon" /> -->
             <nuxt-link
               :to="'/category/' + `${category?.slug}`"
+              @click="closeCatalog"
               class="hover:text-orenge"
               >{{ category?.name }}</nuxt-link
             >
@@ -87,5 +91,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -13,6 +13,7 @@
         :stars="product?.stars"
         v-for="product in products"
         :key="product.id"
+        :slug="product?.products?.[0]?.slug"
         class="h-auto"
       />
     </div>
@@ -40,6 +41,7 @@ export default {
         const data = await porductsApi.getProducts('?category='+this.$route.params.category);
         const dataCategory = await porductsApi.getCategory(this.$route.params.category);
         this.products = data?.data?.products?.data;
+        console.log(this.products)
         this.category = dataCategory?.data?.products?.data;
         console.log(data)
       } catch (e) {

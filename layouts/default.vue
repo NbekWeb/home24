@@ -1,25 +1,27 @@
 <template lang="">
-  <div class="relative">
-    <MainContact />
-    <MainNavbar />
-    <div>
-      <nuxt />
-      <div
-        class="absolute top-0 z-30 flex items-center justify-center w-full h-screen overflow-hidden bg-black/80"
-        v-show="getLog"
-      >
-        <CardLogin class="" />
+  <client-only>
+    <div class="relative">
+      <MainContact />
+      <MainNavbar />
+      <div>
+        <nuxt />
+        <div
+          class="absolute top-0 z-30 flex items-center justify-center w-full h-screen overflow-hidden bg-black/80"
+          v-show="getLog"
+        >
+          <CardLogin class="" />
+        </div>
       </div>
+      <Foot />
     </div>
-    <Foot />
-  </div>
+  </client-only>
 </template>
 <script>
 export default {
   computed: {
-    getLog(){
-        return this.$store.state.log
-    }
+    getLog() {
+      return this.$store.state.log;
+    },
   },
 };
 </script>

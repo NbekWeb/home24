@@ -13,6 +13,7 @@
         :img="product.images[0].md_img"
         v-for="product in searchs"
         :key="product.id"
+        :slug="product.slug"
         class="h-auto"
       />
       <!-- <div v-for="product in searchs" :key="product.id"> {{ product.images[0].md_img }}</div> -->

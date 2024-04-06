@@ -10,6 +10,7 @@
           :img="product?.products?.[0]?.images?.[0]?.md_img"
           :name="product?.products?.[0]?.name"
           :price="product?.products?.[0]?.real_price"
+          :slug="product?.products?.[0]?.slug"
           :stars="product?.stars"
           v-for="product in products"
           :key="product.id"

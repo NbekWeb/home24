@@ -17,6 +17,9 @@ export default {
   async getProducts(category) {
     return await $nuxt.$axiosInstance.get(`/products${category}`);
   },
+  async getProduct(slug) {
+    return await $nuxt.$axiosInstance.get(`/products/${slug}`);
+  },
   async getSearch(search) {
     return await $nuxt.$axiosInstance.get(`/search?search=${search}`);
   },
