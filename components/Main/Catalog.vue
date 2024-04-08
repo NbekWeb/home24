@@ -3,7 +3,7 @@
     class="absolute top-0 z-20 w-full h-auto bg-white py-14"
     v-show="categories.length > 0"
   >
-    <div class="container flex w-full mx-auto">
+    <div class="container flex w-full mx-auto" >
       <div class="flex h-auto pl-3 overflow-y-auto">
         <div
           class="flex flex-col gap-y-14 justify-start w-[250px] gap-6 border-r-[2px] border-bor-grey"
@@ -13,13 +13,14 @@
             v-for="category in categories"
             :key="category?.id"
             @mouseover="getCategoryChildren(category)"
+            @click="close"
           >
             <!-- <img src="@/assets/img/icon/Heart.svg" alt="Heart Icon" /> -->
             <nuxt-link
               :to="'/category/' + `${category?.slug}`"
-              @click="closeCatalog"
+             
               class="hover:text-orenge"
-              >{{ category?.name }}</nuxt-link
+              >{{ category?.name }} s</nuxt-link
             >
           </div>
         </div>
@@ -77,6 +78,10 @@ export default {
         console.log(e);
       }
     },
+    close(){
+      this.$store.commit("toggleCatalog");
+    },
+
     getCategoryChildren(category) {
       if (category?.children.length != 0) {
         this.title = category?.name;

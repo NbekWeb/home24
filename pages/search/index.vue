@@ -106,7 +106,6 @@ export default {
       try {
         const data = await porductsApi.getSearch(this.$route.params.search);
         this.searchs = data?.data?.products;
-        console.log(this.searchs);
       } catch (e) {
         console.log(e);
       }

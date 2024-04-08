@@ -1,12 +1,14 @@
 <template>
   <div class="w-[590px] h-[460px] bg-white login z-30">
     <div class="flex justify-between p-10 bg-back-grey">
-      <p>{{ $t("login") }}</p>
+      <p>{{ $store.commit("login") ? "Войти" : "Создать профиль" }}</p>
       <img
         src="@/assets/img/icon/cancel.svg"
         alt=""
         @click="$store.commit('toggleLog')"
+        v-if="!ruleForm.sendCode"
       />
+      <p v-else @click="toggleSms">Изменить номер</p>
     </div>
 
     <el-form
@@ -16,12 +18,12 @@
       class="p-10 font-mono text-xl demo-ruleForm placeholder-grey text-grey"
     >
       <div v-if="!ruleForm.sendCode">
-        <el-form-item :label="$t('phone')" prop="number" class="mb-6">
+        <el-form-item label="Номер телефона" prop="number" class="mb-6">
           <el-input
             v-model="ruleForm.number"
             class="border"
             v-mask="'998XXXXXXXXX'"
-            :placeholder="$t('enterPhone')"
+            placeholder="+998 (__) ___ __ __"
           ></el-input>
         </el-form-item>
         <el-button
@@ -29,8 +31,9 @@
           @click="submitForm('ruleFormRef')"
           class="border"
         >
-          {{ $t("smsButton") }}
+          {{ login ? "Пароль" : "СМС-код" }}
         </el-button>
+        <p></p>
       </div>
       <div v-else>
         <el-form-item :label="$t('phone')" prop="number" class="mb-6">
@@ -45,7 +48,7 @@
           @click="submitForm2('ruleFormRef')"
           class="border"
         >
-          {{ $t("codeButton") }}
+        Войти
         </el-button>
       </div>
     </el-form>
@@ -58,6 +61,7 @@ import loginApi from "@/api/authApi.js";
 export default {
   data() {
     return {
+      login:false,
       ruleForm: {
         number: "",
         smsCode: "",
@@ -76,6 +80,12 @@ export default {
     };
   },
   methods: {
+    toggleSms() {
+      this.ruleForm.sendCode = !this.ruleForm.sendCode;
+    },
+    toggleLogin(){
+      this.login=!this.login
+    },
     async __SEND_SMS() {
       await loginApi.postSendCode({ phone_number: this.ruleForm.number });
       this.ruleForm.sendCode = true;
@@ -92,7 +102,6 @@ export default {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
           this.ruleForm.sendCode = true;
-          console.log(this.ruleForm.number);
           await loginApi.postSendCode({
             phone_number: this.ruleForm.number,
           });
@@ -109,7 +118,7 @@ export default {
             sms_code: this.ruleForm.smsCode,
           });
           localStorage.setItem("token", data?.data?.token);
-          this.$store.commit('toggleLog')
+          this.$store.commit("toggleLog");
         } else {
           return false;
         }

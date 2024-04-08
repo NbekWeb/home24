@@ -1,6 +1,8 @@
 export const state = () => ({
     log: false,
     catalog: false,
+    edit:false,
+    login:false
   })
   
   export const getters = {

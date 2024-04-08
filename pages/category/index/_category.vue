@@ -1,9 +1,9 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex gap-2 mb-8 text-xl text-grey">
+    <div class="flex gap-2 mb-8 text-xl text-grey" v-if="$route.params.category">
       <nuxt-link to="/" class="text-orenge">{{ $t("home") }}</nuxt-link>
       <img src="@/assets/img/icon/arrow-right.svg" alt="arrow" srcset="" />
-      <nuxt-link to="/wishes">{{ $t("favorites") }}</nuxt-link>
+      <nuxt-link to="/category">{{ $route.params.category }} </nuxt-link>
     </div>
     <div class="flex flex-wrap gap-x-6 gap-y-12" v-if="category.length > 0">
       <CardProduct
@@ -32,18 +32,21 @@ export default {
   data() {
     return {
       products: [],
-      category:[]
+      category: [],
     };
   },
   methods: {
     async __GET_PRODUCTS() {
       try {
-        const data = await porductsApi.getProducts('?category='+this.$route.params.category);
-        const dataCategory = await porductsApi.getCategory(this.$route.params.category);
+        const data = await porductsApi.getProducts(
+          "?category=" + this.$route.params.category
+        );
+        const dataCategory = await porductsApi.getCategory(
+          this.$route.params.category
+        );
         this.products = data?.data?.products?.data;
-        console.log(this.products)
+        console.log(this.products);
         this.category = dataCategory?.data?.products?.data;
-        console.log(data)
       } catch (e) {
         console.log(e);
       }

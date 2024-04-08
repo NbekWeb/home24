@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <nuxt-link
       :to="'/products/' + slug"
       class="flex flex-col w-64 h-full gap-y-2 gap-x-6 product rounded-2xl"

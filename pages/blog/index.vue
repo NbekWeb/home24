@@ -1,6 +1,10 @@
 <template>
   <div class="container mx-auto text-bold-grey">
-    <div class="navigation-link"></div>
+    <div class="flex gap-2 mb-8 text-xl text-grey">
+        <nuxt-link to="/" class="text-orenge">{{ $t("home") }}</nuxt-link>
+        <img src="@/assets/img/icon/arrow-right.svg" alt="arrow" srcset="" />
+        <nuxt-link :to="'/blog/'+blog?.slug">{{ blog?.title }}</nuxt-link>
+      </div>
     <div class="">
       <h3 class="mt-4 mb-8 text-4xl font-medium">Блог</h3>
       <div>

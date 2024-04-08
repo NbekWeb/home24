@@ -3,7 +3,7 @@
       <div class="flex gap-2 mb-8 text-xl text-grey">
         <nuxt-link to="/" class="text-orenge">{{ $t("home") }}</nuxt-link>
         <img src="@/assets/img/icon/arrow-right.svg" alt="arrow" srcset="" />
-        <nuxt-link to="/wishes">{{ $t("favorites") }}</nuxt-link>
+        <nuxt-link to="/brand">Brands</nuxt-link>
       </div>
       <div class="flex flex-wrap gap-x-6 gap-y-12" v-if="products.length > 0">
         <CardProduct
@@ -39,7 +39,6 @@
         try {
           const data = await porductsApi.getBrand(this.$route.params.brand);
           this.products = data?.data?.products?.data;
-          console.log(data)
         } catch (e) {
           console.log(e);
         }
